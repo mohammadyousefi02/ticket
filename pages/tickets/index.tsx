@@ -1,16 +1,8 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import MainLayout from '../../src/layout/MainLayout'
-import {AiOutlineBell} from "react-icons/ai"
-import {FiChevronsLeft,FiChevronsRight,FiChevronLeft,FiChevronRight} from "react-icons/fi"
-import Select, { IndicatorsContainerProps,components } from "react-select"
-import { ConsoleConstructorOptions } from 'console'
 import useGetDecodedToken from '../../hooks/useGetDecodedToken'
-import axios from 'axios'
-import { server } from '../../config/server'
-import Link from 'next/link'
 import useUserToken from '../../hooks/useUserToken'
 import { useRouter } from 'next/router'
-import MySelect from '../../src/layout/components/Select'
 import PaginationFooter from '../../src/layout/components/PaginationFooter'
 import TicketForm from '../../src/layout/components/TicketForm'
 import TicketCards from '../../src/layout/components/TicketCards'

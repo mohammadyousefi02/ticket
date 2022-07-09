@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import React from 'react'
 import { Iticket } from '../../../../interfaces/ticketInterface'
 import { IuserTicket } from '../../../../interfaces/userInterface'

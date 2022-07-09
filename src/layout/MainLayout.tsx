@@ -11,6 +11,7 @@ import axios from 'axios'
 import { server } from '../../config/server'
 import {useDispatch} from "react-redux"
 import {setAdminTickets} from "../../redux/slices/adminTicketsSlice"
+import {setUserTickets} from "../../redux/slices/userTicketsSlice"
 
 interface Iprops{
     children?:React.ReactNode,
@@ -26,6 +27,11 @@ function Header() {
     useEffect(()=>{
         if(decoded?.isAdmin)setStatus(decoded.isOnline!)
     },[])
+    const logOut = () => {
+        removeToken()
+        dispatch(setAdminTickets([]))
+        dispatch(setUserTickets([]))
+    }
     const getTickets = async() => {
         try {
             const res = await axios.get(`${server}/api/get-tickets`,{
@@ -58,7 +64,7 @@ function Header() {
                         <span>پشتیبانی</span>
                     </div>
                     <div className='flex items-center gap-4'>
-                        {router.query.id ? <Link href={"/tickets"}><IoArrowBackSharp fontSize={18}/></Link> : <BiLogOut onClick={removeToken} fontSize={18}/> }
+                        {router.query.id ? <Link href={"/tickets"}><IoArrowBackSharp fontSize={18}/></Link> : <BiLogOut onClick={logOut} fontSize={18}/> }
                         {decoded.isAdmin && (
                             <>
                                 <div className='flex items-center gap-2'>
