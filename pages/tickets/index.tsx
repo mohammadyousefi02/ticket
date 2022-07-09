@@ -16,7 +16,7 @@ import TicketForm from '../../src/layout/components/TicketForm'
 import TicketCards from '../../src/layout/components/TicketCards'
 import TicketPageHeader from '../../src/layout/components/TicketPageHeader'
 import TicketCardsHeader from '../../src/layout/components/TicketCardsHeader'
-import { addNewTicketHandler, getOnlineAdmins, getUserData, setUnseenedMessageNumber } from './actions/ticket'
+import { addNewTicketHandler, getOnlineAdmins, getUserData, setUnseenedMessageNumber } from '../../actions/ticket'
 import {useSelector,useDispatch} from "react-redux"
 import usePagination from '../../hooks/usePagination'
 import { Iuser } from '../../interfaces/userInterface'

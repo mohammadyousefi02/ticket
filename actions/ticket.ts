@@ -1,9 +1,9 @@
-import { IdecodedToken } from './../../../interfaces/decodedTokenInterface';
-import { server } from "../../../config/server"
+import { IdecodedToken } from '../interfaces/decodedTokenInterface';
+import { server } from "../config/server"
 import axios from "axios"
-import { setUserTickets } from '../../../redux/slices/userTicketsSlice';
-import { store } from '../../../redux/store';
-import { Iuser } from '../../../interfaces/userInterface';
+import { setUserTickets } from '../redux/slices/userTicketsSlice';
+import { store } from '../redux/store';
+import { Iuser } from '../interfaces/userInterface';
 
 type Tdispatch = typeof store.dispatch
 
