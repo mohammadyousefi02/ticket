@@ -1,4 +1,5 @@
 import axios, { AxiosError } from 'axios'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import { server } from '../../config/server'
@@ -28,13 +29,16 @@ function Register() {
     }
   return (
     <MainLayout height='h-[92%]'>
-        <div className='h-full flex flex-col gap-4 text-black'>
-            <input type="text" value={username} onChange={(e)=>setUsername(e.target.value)} className='p-2 md:p4 rounded' placeholder='یوزرنیم خود را وارد کنید' />
-            <input type="text" value={email} onChange={(e)=>setEmail(e.target.value)} className='p-2 md:p4 rounded' placeholder='ایمیل خود را وارد کنید' />
-            <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} className='p-2 md:p4 rounded' placeholder='پسورد خود را وارد کنید' />
-            <button className='bg-[#2352C3] py-2 rounded text-white' onClick={registerHandler}>ثبت نام</button>
+      <>
+        <Link href={'/'}><button className='bg-[#2352C3] py-2 md:p-4 rounded'>بازگشت</button></Link>
+        <div className='h-full flex flex-col gap-4 justify-center text-black px-[100px]'>
+            <input type="text" value={username} onChange={(e)=>setUsername(e.target.value)} className='p-2 md:p-4 rounded' placeholder='یوزرنیم خود را وارد کنید' />
+            <input type="text" value={email} onChange={(e)=>setEmail(e.target.value)} className='p-2 md:p-4 rounded' placeholder='ایمیل خود را وارد کنید' />
+            <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} className='p-2 md:p-4 rounded' placeholder='پسورد خود را وارد کنید' />
+            <button className='bg-[#2352C3] py-2 md:py-4 rounded text-white' onClick={registerHandler}>ثبت نام</button>
             <p>{error}</p>
         </div>
+      </>
     </MainLayout>
   )
 }

@@ -22,12 +22,12 @@ const Home: NextPage = () => {
       </Head>
 
       <MainLayout height='h-[92%]'>
-        <div className='h-full flex flex-col justify-center items-center gap-4'>
+        <div className='h-full flex flex-col justify-center items-center gap-4 md:px-[100px]'>
           <Link href="/login">
-            <button  className='bg-[#2352C3] w-full py-2 rounded-lg'>ورود</button>
+            <button  className='bg-[#2352C3] w-full py-2 md:py-4 rounded-lg'>ورود</button>
           </Link>
           <Link href={"/register"}>
-            <button className='bg-[#2352C3] w-full py-2 rounded-lg'>ثبت نام</button>
+            <button className='bg-[#2352C3] w-full py-2 md:py-4 rounded-lg'>ثبت نام</button>
           </Link>
         </div>
       </MainLayout>

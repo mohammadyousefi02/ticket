@@ -22,6 +22,10 @@ a {
   margin:0
 }
 
+input {
+  outline: none !important;
+}
+
 body {
   background-color: #122640;
 }
