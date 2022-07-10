@@ -63,7 +63,7 @@ function Tickets() {
     <MainLayout>
         <div className='px-4 pb-4 bg-[#293145] h-full rounded-lg flex flex-col'>
             {!userInfo?.isAdmin && <TicketPageHeader unseenedMessages={unseenedMessages!} onlineAdmins={onlineAdmins!}/>}
-            <div className='overflow-x-auto'>
+            <div className='overflow-x-auto mt-4'>
                 <TicketCardsHeader/>
                 {userInfo?.isAdmin ? <TicketCards tickets={adminTickets}/> : <TicketCards userTickets={userTicketsList}/>}
             </div>

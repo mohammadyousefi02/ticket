@@ -68,7 +68,7 @@ function Header() {
     return (
         <header className='py-4 border-b border-[#9c9c9c]'>
                 <div className='flex items-center justify-between px-3'>
-                    <div className='flex items-center gap-2'>
+                    <div className='flex items-center gap-4'>
                         <CgMenuRight fontSize={18} className="mt-1"/>
                         <span>پشتیبانی</span>
                     </div>
