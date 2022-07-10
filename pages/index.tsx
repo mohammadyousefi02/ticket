@@ -4,6 +4,7 @@ import Link from 'next/link'
 import MainLayout from '../src/layout/MainLayout'
 import useUserToken from "../hooks/useUserToken"
 import { useRouter } from 'next/router'
+import Button from '../src/layout/components/Button'
 
 const Home: NextPage = () => {
   const router = useRouter()
@@ -20,10 +21,10 @@ const Home: NextPage = () => {
       <MainLayout height='h-[92%]'>
         <div className='h-full flex flex-col justify-center items-center gap-4 md:px-[100px]'>
           <Link href="/login">
-            <button  className='bg-[#2352C3] w-full py-2 md:py-4 rounded-lg'>ورود</button>
+            <Button title='ورود' className='w-full py-2 md:py-4'/>
           </Link>
           <Link href={"/register"}>
-            <button className='bg-[#2352C3] w-full py-2 md:py-4 rounded-lg'>ثبت نام</button>
+            <Button title='ثبت نام' className='w-full py-2 md:py-4'/>
           </Link>
         </div>
       </MainLayout>

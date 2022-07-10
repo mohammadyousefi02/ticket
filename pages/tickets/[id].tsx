@@ -7,6 +7,9 @@ import Message from '../../src/layout/components/Message'
 import { useRouter } from 'next/router'
 import useUserToken from '../../hooks/useUserToken'
 import { Iticket } from '../../interfaces/ticketInterface'
+import TextArea from '../../src/layout/components/TextArea'
+import Button from '../../src/layout/components/Button'
+import Badge from '../../src/layout/components/Badge'
 
 function SingleTicket() {
     const router = useRouter()
@@ -72,8 +75,8 @@ function SingleTicket() {
                     <div className='flex items-center gap-2'>
                         <span>وضعیت : </span>
                         <span>{ticket?.isSolved ? "بسته شده" : "باز"}</span>
-                        <span className={`w-2 h-2 rounded-full ${ticket?.isSolved ? 'bg-green-500' : 'bg-yellow-500'} mt-1`}></span>
-                        {!ticket?.isSolved && <button className='bg-[#2352C3] p-2 rounded' onClick={changeTicketStatus}>بستن تیکت</button>}
+                        <Badge className={`${ticket?.isSolved ? 'bg-green-500' : 'bg-yellow-500'}`}></Badge>
+                        {!ticket?.isSolved && <Button title="بستن تیکت" onClick={changeTicketStatus} className="p-2"/>}
                     </div>
                 </div>
                 {ticket?.messages?.map((m)=>(
@@ -82,7 +85,7 @@ function SingleTicket() {
             </div>
             {!ticket?.isSolved && (
                 <div className='relative border-t border-[#304066]'>
-                <textarea value={message} onChange={(e)=>setMessage(e.target.value)} placeholder='پیام خود را تایپ کنید' rows={5} className='bg-[#293145] w-full p-2 rounded-lg outline-none'/>
+                <TextArea value={message} onChange={(e)=>setMessage(e.target.value)} placeholder='پیام خود را تایپ کنید' className='bg-transparent focus:border-0 w-full p-2 rounded-lg outline-none'/>
                 <div className='absolute bottom-0 left-1 bg-[#2352C3] rounded-full p-2' onClick={sendNewMessageHandler}>
                     <FaTelegramPlane className='cursor-pointer' fontSize={18}/>
                 </div>
