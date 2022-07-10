@@ -27,7 +27,7 @@ function Tickets() {
     const [onlineAdmins,setOnlineAdmins] = useState(0)
     if(!token) {
         router.push('/')
-        interval && clearInterval()
+        interval && clearInterval(interval)
     }
     const [user,setUser] = useState<Iuser>()
     const [unseenedMessages,setUnseenedMessages] = useState(setUnseenedMessageNumber(user!))
