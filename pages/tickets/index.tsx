@@ -13,7 +13,7 @@ import {useSelector,useDispatch} from "react-redux"
 import usePagination from '../../hooks/usePagination'
 import { Iuser } from '../../interfaces/userInterface'
 
-
+let interval:any;
 
 function Tickets() {
     const dispatch = useDispatch()
@@ -25,7 +25,10 @@ function Tickets() {
     const userInfo = useGetDecodedToken()
     const [token] = useUserToken()
     const [onlineAdmins,setOnlineAdmins] = useState(0)
-    if(!token) router.push('/')
+    if(!token) {
+        router.push('/')
+        interval && clearInterval()
+    }
     const [user,setUser] = useState<Iuser>()
     const [unseenedMessages,setUnseenedMessages] = useState(setUnseenedMessageNumber(user!))
     useEffect(()=>{
@@ -37,7 +40,7 @@ function Tickets() {
     useEffect(()=>{
        if(!userInfo.isAdmin){
             setUnseenedMessages(setUnseenedMessageNumber(user!))
-            setInterval(()=>{
+           interval = setInterval(()=>{
                 getUserData(userInfo,setUser,dispatch)
                 setUnseenedMessages(setUnseenedMessageNumber(user!))
                 getOnlineAdmins(setOnlineAdmins)
