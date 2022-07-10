@@ -27,7 +27,6 @@ function Tickets() {
     const [onlineAdmins,setOnlineAdmins] = useState(0)
     if(!token) {
         router.push('/')
-        console.log(interval)
         interval && clearInterval(interval)
     }
     const [user,setUser] = useState<Iuser>()
