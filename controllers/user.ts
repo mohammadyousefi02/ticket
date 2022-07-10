@@ -11,7 +11,7 @@ const signUp = async(req:NextApiRequest,res:NextApiResponse) => {
     try {
         const {username,email,password} = req.body;
         let user = await Users.findOne({ email });
-        if (user) return res.status(400).send({error:'User already registered.'});
+        if (user) return res.status(400).send({error:'با این ایمیل اکانتی وجود دارد'});
         let newUser = new Users({username,email,password,role:'customer',tickets:[]})
         
         const salt = await bcrypt.genSalt(10);
@@ -29,10 +29,10 @@ const logIn = async (req:NextApiRequest, res:NextApiResponse) => {
     try {
         const {email,password} = req.body
         let user = await Users.findOne({ email });
-        if (!user) return res.status(400).send({error:'Invalid email or password.'});
+        if (!user) return res.status(400).send({error:'ایمیل یا پسورد اشتباه است'});
 
         const validPassword = await bcrypt.compare(password, user.password);
-        if (!validPassword) return res.status(400).send({error:'Invalid email or password.'});
+        if (!validPassword) return res.status(400).send({error:'ایمیل یا پسورد اشتباه است'});
 
         const token = user.generateAuthToken();
         res.status(200).send({token});

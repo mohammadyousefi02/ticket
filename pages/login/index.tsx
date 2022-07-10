@@ -33,7 +33,7 @@ function Login() {
                 <input type="text" value={email} onChange={(e)=>setEmail(e.target.value)} className='p-2 md:p-4 rounded' placeholder='ایمیل خود را وارد کنید' />
                 <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} className='p-2 md:p-4 rounded' placeholder='پسورد خود را وارد کنید' />
                 <button className='bg-[#2352C3] py-2 md:p-4 rounded text-white' onClick={loginHandler}>ورود</button>
-                <p>{error}</p>
+                <p className='text-white text-lg text-center'>{error}</p>
             </div>
         </>
     </MainLayout>

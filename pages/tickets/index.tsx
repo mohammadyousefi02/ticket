@@ -24,6 +24,7 @@ function Tickets() {
     const router = useRouter()
     const userInfo = useGetDecodedToken()
     const [token] = useUserToken()
+    const [error,setError] = useState(false)
     const [onlineAdmins,setOnlineAdmins] = useState(0)
     if(!token) {
         router.push('/')
@@ -51,7 +52,12 @@ function Tickets() {
     const [subject, setSubject] = useState('')
     const [message, setMessage] = useState('')
     const addNewTicket = () => {
-        addNewTicketHandler({supportUnit,subject,message},token,setSupportUnit,setSubject,setMessage,userInfo,setUser,dispatch)
+        if(supportUnit && subject && message){
+            addNewTicketHandler({supportUnit,subject,message},token,setSupportUnit,setSubject,setMessage,userInfo,setUser,dispatch)
+            setError(false)
+        }else{
+            setError(true)
+        }
     }
   return (
     <MainLayout>
@@ -62,7 +68,7 @@ function Tickets() {
                 {userInfo?.isAdmin ? <TicketCards tickets={adminTickets}/> : <TicketCards userTickets={userTicketsList}/>}
             </div>
             <PaginationFooter/>
-            {!userInfo.isAdmin && <TicketForm subject={subject} setSubject={setSubject} setSupportUnit={setSupportUnit} message={message}
+            {!userInfo.isAdmin && <TicketForm error={error} subject={subject} setSubject={setSubject} setSupportUnit={setSupportUnit} message={message}
                 setMessage={setMessage} addNewTicketHandler={addNewTicket}
             />}
         </div>

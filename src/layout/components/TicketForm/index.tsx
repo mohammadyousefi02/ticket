@@ -14,10 +14,11 @@ interface Props {
   setSupportUnit:(value:string)=>void,
   setMessage:(value:string)=>void,
   message:string,
-  addNewTicketHandler:MouseEventHandler<HTMLButtonElement>
+  addNewTicketHandler:MouseEventHandler<HTMLButtonElement>,
+  error:boolean
 }
 
-function TicketForm({subject,setSubject,setSupportUnit,message,setMessage,addNewTicketHandler}:Props) {
+function TicketForm({subject,setSubject,setSupportUnit,message,setMessage,addNewTicketHandler,error}:Props) {
   return (
     <div className='bg-[#313A55] flex-1 flex flex-col gap-4 rounded-lg p-4'>
         <span className='text-sm text-right'>ثبت درخواست پشتیبانی</span>
@@ -31,6 +32,7 @@ function TicketForm({subject,setSubject,setSupportUnit,message,setMessage,addNew
             <textarea value={message} onChange={(e)=>setMessage(e.target.value)} rows={5} placeholder='پیغام خود را درج کنید' className='bg-[#122640] p-2 rounded-lg outline-none' />
         </div>
         <button onClick={addNewTicketHandler} className='bg-[#2352C3] py-3 rounded-lg'>ثبت درخواست</button>
+        {error && <p className='text-white text-[18px] text-center'>همه فیلد ها باید پر شود</p>}
     </div>
   )
 }

@@ -32,16 +32,18 @@ function SingleTicket() {
         }
     },[])
     const sendNewMessageHandler = async() => {
-        try {
-            await axios.post(`${server}/api/tickets/send-new-message/${router.query.id}`,{message},{
-                headers:{
-                    'x-auth-token' : token
-                }
-            })
-            setMessage("")
-            getMessages()
-        } catch (error) {
-            console.log(error)
+        if(message) {
+            try {
+                await axios.post(`${server}/api/tickets/send-new-message/${router.query.id}`,{message},{
+                    headers:{
+                        'x-auth-token' : token
+                    }
+                })
+                setMessage("")
+                getMessages()
+            } catch (error) {
+                console.log(error)
+            }
         }
     }
     const changeTicketStatus = async() => {
@@ -71,7 +73,7 @@ function SingleTicket() {
                         <span>وضعیت : </span>
                         <span>{ticket?.isSolved ? "بسته شده" : "باز"}</span>
                         <span className={`w-2 h-2 rounded-full ${ticket?.isSolved ? 'bg-green-500' : 'bg-yellow-500'} mt-1`}></span>
-                        <button className='bg-[#2352C3] p-2 rounded' onClick={changeTicketStatus}>بستن تیکت</button>
+                        {!ticket?.isSolved && <button className='bg-[#2352C3] p-2 rounded' onClick={changeTicketStatus}>بستن تیکت</button>}
                     </div>
                 </div>
                 {ticket?.messages?.map((m)=>(
