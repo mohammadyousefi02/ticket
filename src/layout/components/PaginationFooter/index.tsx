@@ -12,11 +12,11 @@ function PaginationFooter() {
  const {page} = useSelector((store:any)=>store.pagination)
   return (
     <div className='flex items-center justify-center gap-4 mb-2 text-[16px]'>
-        <FiChevronsRight onClick={()=>dispatch(dblNextPage())}/>
-        <FiChevronRight onClick={()=>dispatch(nextPage())}/>
+        <FiChevronsRight className='cursor-pointer' onClick={()=>dispatch(dblNextPage())}/>
+        <FiChevronRight className='cursor-pointer' onClick={()=>dispatch(nextPage())}/>
         <span>{page}</span>
-        <FiChevronLeft onClick={()=>dispatch(prevPage())}/>
-        <FiChevronsLeft onClick={()=>dispatch(dblPrevPage())}/>
+        <FiChevronLeft className='cursor-pointer' onClick={()=>dispatch(prevPage())}/>
+        <FiChevronsLeft className='cursor-pointer' onClick={()=>dispatch(dblPrevPage())}/>
     </div>
   )
 }

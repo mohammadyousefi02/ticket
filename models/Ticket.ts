@@ -28,6 +28,11 @@ ticketSchema.methods.addMessage = function(user:string,message:string){
     return this.save()
 }
 
+ticketSchema.methods.changeStatus = function(){
+    this.isSolved = true
+    return this.save()
+}
+
 
 
 const Tickets = mongoose.models.Tickets || mongoose.model("Tickets",ticketSchema)

@@ -71,4 +71,21 @@ const addNewMessage = async(req:NextApiRequest,res:NextApiResponse) => {
         }
 }
 
-export { addNewTicket, getTicket, getAllTickets, addNewMessage }
+const changeTicketStatus = async(req:NextApiRequest, res:NextApiResponse) => {
+    try {
+        const token:string = <string>req.headers["x-auth-token"]
+        const decoded = <IdecodedToken>jwt.verify(token, process.env.jwtPrivateKey!)
+        const {id} = req.query
+        const ticket = await Tickets.findById(id)
+        await ticket.changeStatus()
+        if(!decoded.isAdmin){
+            const user = await Users.findById(decoded._id)
+            await user.changeTicketStatus(id)
+        }
+        res.status(200).send("changed")
+    } catch (error) {
+        res.status(400).send({error})
+    }
+}
+
+export { addNewTicket, getTicket, getAllTickets, addNewMessage, changeTicketStatus }

@@ -25,12 +25,20 @@ function Header() {
     const decoded = useGetDecodedToken()
     const [status,setStatus] = useState(false)
     useEffect(()=>{
-        if(decoded?.isAdmin)setStatus(decoded.isOnline!)
+        if(decoded?.isAdmin){
+            const localStatus = localStorage.getItem("status")
+            if(localStatus){
+                localStatus === "on" ? setStatus(true) : setStatus(false)
+            }else{
+                setStatus(decoded.isOnline!)
+            }
+        }
     },[])
     const logOut = () => {
         removeToken()
         dispatch(setAdminTickets([]))
         dispatch(setUserTickets([]))
+        localStorage.removeItem("status")
     }
     const getTickets = async() => {
         try {
@@ -52,6 +60,7 @@ function Header() {
                 }
             })
             setStatus(!status)
+            localStorage.setItem("status",status?"off":"on")
         } catch (error) {
             console.log(error)
         }
@@ -64,7 +73,7 @@ function Header() {
                         <span>پشتیبانی</span>
                     </div>
                     <div className='flex items-center gap-4'>
-                        {router.query.id ? <Link href={"/tickets"}><IoArrowBackSharp fontSize={18}/></Link> : <BiLogOut onClick={logOut} fontSize={18}/> }
+                        {router.query.id ? <Link href={"/tickets"}><IoArrowBackSharp className='cursor-pointer' fontSize={18}/></Link> : <BiLogOut className='cursor-pointer' onClick={logOut} fontSize={18}/> }
                         {decoded.isAdmin && (
                             <>
                                 <div className='flex items-center gap-2'>

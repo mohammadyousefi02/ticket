@@ -4,6 +4,7 @@ export interface IuserTicket {
     subject:string,
     supportUnit:string,
     _id:string,
+    isSolved:boolean
 }
 
 export interface Iuser {

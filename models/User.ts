@@ -19,6 +19,7 @@ const userSchema = new mongoose.Schema({
         isSeened:Boolean,
         subject:String,
         supportUnit:String,
+        isSolved:Boolean
     })],
     isOnline:Boolean
 })
@@ -29,7 +30,13 @@ userSchema.methods.generateAuthToken = function() {
 }
 
 userSchema.methods.addNewTicket = function(id:mongoose.Schema.Types.ObjectId,subject:string, supportUnit:string){
-    this.tickets = [...this.tickets, {ticket:id, isSeened:true,subject,supportUnit}]
+    this.tickets = [...this.tickets, {ticket:id, isSeened:true,subject,supportUnit,isSolved:false}]
+    return this.save()
+}
+
+userSchema.methods.changeTicketStatus = function(id:mongoose.Schema.Types.ObjectId){
+    const ticketIndex = this.tickets.findIndex((t:any)=>t.ticket.toString() === id.toString())
+    this.tickets[ticketIndex].isSolved = true
     return this.save()
 }
 

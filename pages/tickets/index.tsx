@@ -27,6 +27,7 @@ function Tickets() {
     const [onlineAdmins,setOnlineAdmins] = useState(0)
     if(!token) {
         router.push('/')
+        console.log(interval)
         interval && clearInterval(interval)
     }
     const [user,setUser] = useState<Iuser>()
@@ -57,8 +58,10 @@ function Tickets() {
     <MainLayout>
         <div className='px-4 pb-4 bg-[#293145] h-full rounded-lg flex flex-col'>
             {!userInfo?.isAdmin && <TicketPageHeader unseenedMessages={unseenedMessages!} onlineAdmins={onlineAdmins!}/>}
-            <TicketCardsHeader/>
-            {userInfo?.isAdmin ? <TicketCards tickets={adminTickets}/> : <TicketCards userTickets={userTicketsList}/>}
+            <div className='overflow-x-auto'>
+                <TicketCardsHeader/>
+                {userInfo?.isAdmin ? <TicketCards tickets={adminTickets}/> : <TicketCards userTickets={userTicketsList}/>}
+            </div>
             <PaginationFooter/>
             {!userInfo.isAdmin && <TicketForm subject={subject} setSubject={setSubject} setSupportUnit={setSupportUnit} message={message}
                 setMessage={setMessage} addNewTicketHandler={addNewTicket}
