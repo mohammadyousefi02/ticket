@@ -15,7 +15,7 @@ function Input({value,onChange,type="text",placeholder="",className="",id="",lab
   return (
     <div className='flex flex-col gap-2'>
         <label htmlFor={id}>{label}</label>
-        <input value={value} id={id} onChange={onChange} type={type} placeholder={placeholder} className={`${bg} p-2 rounded-lg outline-none focus:border-2 focus:border-[#396A9B] ${className}`} />
+        <input dir='auto' value={value} id={id} onChange={onChange} type={type} placeholder={placeholder} className={`${bg} p-2 rounded-lg outline-none focus:border-2 focus:border-[#396A9B] placeholder:text-end ${className}`} />
     </div>
   )
 }
