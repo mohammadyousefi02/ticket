@@ -67,16 +67,18 @@ function SingleTicket() {
     <MainLayout height='h-[92%]'>
         <div className='pb-4 bg-[#293145] h-full rounded-lg flex flex-col'>
             <div className='flex-1 flex flex-col py-2 overflow-auto px-4'>
-                <div className='flex items-center justify-between'>
-                    <div>
-                        <span className='text-[#AAAAAA]'>موضوع درخواست : </span>
-                        <span>{ticket?.subject}</span>
-                    </div>
-                    <div className='flex items-center gap-2'>
-                        <span>وضعیت : </span>
-                        <span>{ticket?.isSolved ? "بسته شده" : "باز"}</span>
-                        <Badge className={`${ticket?.isSolved ? 'bg-green-500' : 'bg-yellow-500'}`}></Badge>
-                        {!ticket?.isSolved && <Button title="بستن تیکت" onClick={changeTicketStatus} className="p-2"/>}
+                <div className='overflow-auto'>
+                    <div className='flex items-center min-w-[300px] justify-between'>
+                        <div>
+                            <span className='text-[#AAAAAA]'>موضوع درخواست : </span>
+                            <span>{ticket?.subject}</span>
+                        </div>
+                        <div className='flex items-center gap-2'>
+                            <span>وضعیت : </span>
+                            <span>{ticket?.isSolved ? "بسته شده" : "باز"}</span>
+                            <Badge className={`${ticket?.isSolved ? 'bg-green-500' : 'bg-yellow-500'}`}></Badge>
+                            {!ticket?.isSolved && <Button title="بستن تیکت" onClick={changeTicketStatus} className="px-2 py-1"/>}
+                        </div>
                     </div>
                 </div>
                 {ticket?.messages?.map((m)=>(
@@ -85,7 +87,7 @@ function SingleTicket() {
             </div>
             {!ticket?.isSolved && (
                 <div className='relative border-t border-[#304066]'>
-                <TextArea value={message} onChange={(e)=>setMessage(e.target.value)} placeholder='پیام خود را تایپ کنید' className='bg-transparent focus:border-0 w-full p-2 rounded-lg outline-none'/>
+                <TextArea value={message} onChange={(e)=>setMessage(e.target.value)} placeholder='پیام خود را تایپ کنید' className='focus:border-0 w-full p-2 rounded-lg outline-none' bg='bg-transparent'/>
                 <div className='absolute bottom-0 left-1 bg-[#2352C3] rounded-full p-2' onClick={sendNewMessageHandler}>
                     <FaTelegramPlane className='cursor-pointer' fontSize={18}/>
                 </div>

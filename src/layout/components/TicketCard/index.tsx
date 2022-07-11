@@ -11,7 +11,7 @@ interface Props {
 function TicketCard({id, subject, supportUnit,status}:Props) {
   return (
         <div className='bg-[#313A55] flex justify-between items-center py-2 rounded-lg px-2'>
-            <span className='text-[#EBBA07]'>{subject}</span>
+            <span className='text-[#EBBA07] font-medium'>{subject}</span>
             <span>{supportUnit}</span>
             <span className='bg-[#122640] py-1 w-[80px] text-center rounded-full'>{status ? "بسته شده" : "باز"}</span>
             <div className='flex gap-2'>

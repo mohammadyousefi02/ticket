@@ -38,9 +38,9 @@ function Register() {
       <>
         <Link href={'/'}><Button className='py-2 md:p-4 px-2' title='بازگشت'/></Link>
         <div className='h-full flex flex-col gap-4 justify-center md:px-[100px]'>
-            <Input value={username} onChange={(e)=>setUsername(e.target.value)} className='p-2 md:p-4 bg-[#313A56]' placeholder='یوزرنیم خود را وارد کنید' />
-            <Input value={email} onChange={(e)=>setEmail(e.target.value)} className='p-2 md:p-4  bg-[#313A56]' placeholder='ایمیل خود را وارد کنید' />
-            <Input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} className='p-2 md:p-4  bg-[#313A56]' placeholder='پسورد خود را وارد کنید' />
+            <Input value={username} onChange={(e)=>setUsername(e.target.value)} className='p-2 md:p-4' bg='bg-[#313A56]' placeholder='یوزرنیم خود را وارد کنید' />
+            <Input value={email} onChange={(e)=>setEmail(e.target.value)} className='p-2 md:p-4' bg='bg-[#313A56]' placeholder='ایمیل خود را وارد کنید' />
+            <Input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} className='p-2 md:p-4' bg='bg-[#313A56]' placeholder='پسورد خود را وارد کنید' />
             <Button className='py-2 md:py-4' onClick={registerHandler} title="ثبت نام"/>
             <p className='text-lg text-center'>{error}</p>
         </div>
