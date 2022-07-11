@@ -32,8 +32,8 @@ function Login() {
         <>
             <Link href={'/'}><button className='bg-[#2352C3] py-2 md:p-4 rounded px-2'>بازگشت</button></Link>
             <div className='h-full flex flex-col justify-center gap-4 md:px-[100px]'>
-                <Input value={email} onChange={(e)=>setEmail(e.target.value)} className='p-2 md:p-4' bg='bg-[#313A56]' placeholder='ایمیل خود را وارد کنید' />
-                <Input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} className='p-2 md:p-4' bg='bg-[#313A56]' placeholder='پسورد خود را وارد کنید' />
+                <Input value={email} onChange={(e)=>setEmail(e.target.value)} id="email-input" className='p-2 md:p-4' bg='bg-[#313A56]' placeholder='ایمیل خود را وارد کنید' />
+                <Input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} id="password-input" className='p-2 md:p-4' bg='bg-[#313A56]' placeholder='پسورد خود را وارد کنید' />
                 <Button title="ورود" className=' py-2 md:p-4' onClick={loginHandler}/>
                 <p className='text-lg text-center'>{error}</p>
             </div>
