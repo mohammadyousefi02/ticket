@@ -12,6 +12,7 @@ import { server } from '../../config/server'
 import {useDispatch} from "react-redux"
 import {setAdminTickets} from "../../redux/slices/adminTicketsSlice"
 import {setUserTickets} from "../../redux/slices/userTicketsSlice"
+import convertNumberToPersian from '../../utils/convertNumsToPer'
 
 interface Iprops{
     children?:React.ReactNode,
@@ -91,6 +92,7 @@ function Header() {
 }
 
 function MainLayout({children,height=""}:Iprops) {
+    convertNumberToPersian()
     const [token,setToken] = useState('')
     const [tokenn] = useUserToken()
     useEffect(()=>{

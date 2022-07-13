@@ -39,11 +39,12 @@ function Tickets() {
         }
     },[])
     useEffect(()=>{
-       if(!userInfo.isAdmin){
-            setUnseenedMessages(setUnseenedMessageNumber(user!))
-           interval = setInterval(()=>{
+        setUnseenedMessages(setUnseenedMessageNumber(user!))
+    },[user])
+    useEffect(()=>{
+        if(!userInfo.isAdmin){
+            interval = setInterval(()=>{
                 getUserData(userInfo,setUser,dispatch)
-                setUnseenedMessages(setUnseenedMessageNumber(user!))
                 getOnlineAdmins(setOnlineAdmins)
             },15000)
        }

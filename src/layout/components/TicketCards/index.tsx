@@ -10,7 +10,7 @@ interface Props {
 
 function TicketCards({userTickets=false, tickets}:Props) {
   return (
-    <div className='flex flex-col gap-2 my-4 overflow-x-auto min-w-[500px]'>
+    <div className='flex flex-col gap-2 my-4 overflow-x-auto min-w-[calc(100%+12.8rem)] sm:min-w-[500px]'>
         {typeof userTickets !== "boolean" ? userTickets?.map((t)=>(
             <TicketCard id={t.ticket} supportUnit={t.supportUnit} key={t.ticket} status={t.isSolved} subject={t.subject} />
         )) :  tickets?.map((t)=>(

@@ -65,7 +65,7 @@ function SingleTicket() {
 
   return (
     <MainLayout height='h-[92%]'>
-        <div className='pb-4 bg-[#293145] h-full rounded-lg flex flex-col'>
+        <div className='bg-[#293145] h-full rounded-lg flex flex-col'>
             <div className='flex-1 flex flex-col py-2 overflow-auto px-4'>
                 <div className='overflow-auto'>
                     <div className='flex items-center min-w-[300px] justify-between'>
@@ -87,8 +87,8 @@ function SingleTicket() {
             </div>
             {!ticket?.isSolved && (
                 <div className='relative border-t border-[#304066]'>
-                <TextArea value={message} onChange={(e)=>setMessage(e.target.value)} placeholder='پیام خود را تایپ کنید' className='focus:border-0 w-full p-2 rounded-lg outline-none' bg='bg-transparent'/>
-                <div className='absolute bottom-0 left-1 bg-[#2352C3] rounded-full p-2' onClick={sendNewMessageHandler}>
+                <TextArea value={message} onChange={(e)=>setMessage(e.target.value)} gap="" placeholder='پیام خود را تایپ کنید' className='focus:border-0  w-full rounded-lg outline-none' bg='bg-transparent'/>
+                <div className='absolute bottom-4 left-4 bg-[#2352C3] rounded-full p-2 justify-center' onClick={sendNewMessageHandler}>
                     <FaTelegramPlane className='cursor-pointer' fontSize={18}/>
                 </div>
             </div>

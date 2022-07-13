@@ -10,6 +10,7 @@ interface Props {
 
 function TicketCard({id, subject, supportUnit,status}:Props) {
   return (
+    <Link href={`/tickets/${id.toString()}`}>
         <div className='bg-[#313A55] flex justify-between items-center py-2 rounded-lg px-2'>
             <span className='text-[#EBBA07] font-medium'>{subject}</span>
             <span>{supportUnit}</span>
@@ -19,6 +20,7 @@ function TicketCard({id, subject, supportUnit,status}:Props) {
               <Link href={`/tickets/${id.toString()}`}><span className='text-[#EBBA07] cursor-pointer'>مشاهده</span></Link>
             </div>
         </div>
+    </Link>
   )
 }
 
